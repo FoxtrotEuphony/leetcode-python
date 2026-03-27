@@ -7,7 +7,9 @@ class Test49Solution(unittest.TestCase):
         strs = ["eat","tea","tan","ate","nat","bat"]
         result = Solution().groupAnagrams(strs)
         target = [["bat"],["nat","tan"],["ate","eat","tea"]]
-        self.assertEqual(result, target)
+        for group in target:
+            if not any(map((lambda g: sorted(g) == group), result)):
+                self.fail()
 
     def test_example2(self):
         strs = [""]
